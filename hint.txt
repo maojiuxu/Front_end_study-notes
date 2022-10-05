@@ -1,0 +1,2 @@
+使用git remote add origin '地址' 命令来上传到Gitee
+使用git remote add github '地址' 命令来上传到GitHub
