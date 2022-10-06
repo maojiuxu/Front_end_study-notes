@@ -757,6 +757,10 @@ ES6 新增了一种新的数据类型，`Symbol`。
 
 
 
+`Object.getOwnPropertySymbols()`：获取到对象所有`Symbol`属性名
+
+
+
 ### 十、Set 和 Map
 
 #### 1.Set
@@ -967,7 +971,7 @@ has()
    		可以进行for...of遍历
    	iterator 不仅可以for...of，还可以获取keys或者values 
    2. iterable 对象不一定是 iterator 对象
-   	iterable 可以手动的 nex()  但是不一定能for...of
+   	iterable 可以手动的 next()  但是不一定能for...of
    ```
 
    
@@ -1217,6 +1221,17 @@ Person.sayHello = function () {  // 静态方法
 ##### 3.bind方法
 
 
+
+#### 四、事件委派
+
+
+
+
+
+##### 作用：
+
+1. 提高效率，能够减少内存
+2. 能够动态给子元素添加事件
 
 
 
