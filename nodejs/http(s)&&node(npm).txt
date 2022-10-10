@@ -1,0 +1,95 @@
+
+ 
+服务器
+
+     一台或者多台组成的计算机群组，需要安装专门的软件才能提供服务
+     一般可以租，可以自己搭建，不建议买
+
+客户端
+
+     在前端来讲，客户端指的是拥有浏览器的设备
+     普遍意义上，指的可以联网的设备
+
+网址
+ 
+     url: 全球统一资源定位符 所有的资源都会拥有一个绝对的路径
+
+url:
+
+     https://baike.baidu.com:443/item/%E5%88%98%E4%BA%A6%E8%8F%B2/136156?fr=aladdin#4_7
+
+     https://                    协议
+
+     baike.baidu.com             域名 / ip地址
+
+     :443                        端口
+
+     item/刘亦菲/list.html       虚拟文件路径
+
+     ?fr=aladdin                 查询参数
+
+     #4_7                        锚点/哈希
+     
+
+域名:
+
+     用于表示一台服务器的地址，映射的是 IP，由国家工信部在管理，由顶级注册商进行分配
+
+     根据后缀名和域名的难易程度和普遍程度价格不一，
+
+         .com  .gov   .org            .com.cn   .cn    .gov.cn   .top   .wang
+
+     域名在地址栏中输入之后，会去向 DNS 域名解析商，运营商提供，负责把域名解析为对应的ip地址
+
+
+端口：
+
+     80:   默认的端口，开放给客户的，可以不写的，针对于 http 协议
+
+     443:  默认的端口，开放给客户使用，可以不写，针对于 https 协议
+
+     一般会给公司其他项目指定端口使用，内测、其他内部员工使用的系统、调查问卷...
+
+     一般创建服务器会使用其他端口， 8080   3000   8888   9527   5000  5050
+
+
+哈希 hash :
+
+     url中在最后出现 # 后面的参数，都是哈希值
+
+     作用：作为锚点，进行跳转
+
+           作为哈希值，进行路由切换，就是路径切换  https://music.163.com/#/my/top/list
+
+
+http/https 协议：
+
+     http 超文本传输协议，Hyper Text Transfer Protocol  ： 主要作用是为了发请求(request)和响应(response)
+
+     http 协议是基于 TCP/IP 之上的一个应用层协议。 (只有浏览器使用)
+
+     SMTP 电子邮箱协议，STP ....
+
+
+     TCP: 传输协议： 职责就是稳定的传输内容，三次握手，四次挥手。
+
+         三次握手，客户端和服务器端连接的过程， 3次是最短的有效的沟通次数
+                     1，客户端先发请求，携带数据
+                     2，服务器接收并且响应，携带一些新数据
+                     3，客户端接收到数据，并且再次发送一个新的数据
+
+         四次挥手，客户端和服务器端断开连接的过程，4次是最短的合理的沟通次数
+                     1，客户端发起请求告知服务器资源接收完毕，携带数据
+                     2，服务器端确定资源发送完毕，可以开始断开
+                     3，服务器端开始断开连接，发送数据
+                     4，客户端确定与服务器断开，开始断开并结束
+ 
+
+     IP:  通信协议： 约束每台计算机都需要使用一个 4个号段并且0-255之间的 地址
+
+
+     https://blog.csdn.net/a1809032425/article/details/113368584?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7EPayColumn-1-113368584-blog-90083126.pc_relevant_3mothn_strategy_recovery&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7EPayColumn-1-113368584-blog-90083126.pc_relevant_3mothn_strategy_recovery&utm_relevant_index=1
+     
+
+
+
