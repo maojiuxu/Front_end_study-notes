@@ -1,0 +1,24 @@
+.box {
+  width: 400px;
+  height: 100px;
+  background-color: aqua;
+  border-radius: 20px;
+}
+.box .son {
+  width: 100px;
+  height: 100px;
+  background-color: azure;
+  border-radius: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+ul {
+  list-style: none;
+}
