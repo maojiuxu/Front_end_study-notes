@@ -1,0 +1,51 @@
+{
+  "id": "3735363",
+  "name": "0725_test",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "32537949",
+      "name": "饼图",
+      "font_class": "bingtu",
+      "unicode": "e9c8",
+      "unicode_decimal": 59848
+    },
+    {
+      "icon_id": "32537953",
+      "name": "布局",
+      "font_class": "buju",
+      "unicode": "e9c9",
+      "unicode_decimal": 59849
+    },
+    {
+      "icon_id": "32537955",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e9ca",
+      "unicode_decimal": 59850
+    },
+    {
+      "icon_id": "32537956",
+      "name": "创建人员",
+      "font_class": "chuangjianrenyuan",
+      "unicode": "e9cb",
+      "unicode_decimal": 59851
+    },
+    {
+      "icon_id": "32537960",
+      "name": "查找",
+      "font_class": "chazhao",
+      "unicode": "e9cc",
+      "unicode_decimal": 59852
+    },
+    {
+      "icon_id": "32537973",
+      "name": "打开眼睛",
+      "font_class": "dakaiyanjing",
+      "unicode": "e9cd",
+      "unicode_decimal": 59853
+    }
+  ]
+}
