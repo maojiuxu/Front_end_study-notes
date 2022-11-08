@@ -1,0 +1,33 @@
+.carousel {
+    width: 300px;
+    height: 200px;
+    margin: 100px auto;
+    position: relative;
+}
+
+.carousel .imgs img {
+    width: 300px;
+    display: block;
+}
+
+.carousel .left,
+.carousel .right {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border: 1px solid hotpink;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.carousel .left {
+    left: 0;
+}
+
+.carousel div.right {
+    right: 0;
+}

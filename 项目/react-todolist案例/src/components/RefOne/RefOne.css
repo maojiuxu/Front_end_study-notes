@@ -1,0 +1,13 @@
+input {
+    width: 100px;
+    height: 20px;
+    border: 1px solid skyblue;
+    margin: 20px;
+}
+
+button {
+    border: 2px solid orchid;
+    width: 70px;
+    height: 20px;
+    line-height: 20px;
+}

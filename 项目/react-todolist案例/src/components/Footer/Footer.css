@@ -1,0 +1,28 @@
+.footer {
+    height: 60px;
+    background-color: rgb(46, 42, 42);
+}
+
+.footer ul {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.footer ul li {
+    width: 15%;
+    line-height: 60px;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+}
+
+.footer ul li:hover {
+    background-color: rgb(114, 144, 148);
+    cursor: pointer;
+    color: blueviolet;
+}
+
+footer .bg {
+    background-color: rgb(192, 84, 228);
+}

@@ -1,0 +1,28 @@
+.header {
+    height: 60px;
+    background-color: rgb(46, 42, 42);
+}
+
+.header ul {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.header ul li {
+    width: 15%;
+    line-height: 60px;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+}
+
+.header ul li:hover {
+    background-color: hotpink;
+    cursor: pointer;
+    color: blueviolet;
+}
+
+.bg {
+    background-color: aqua;
+}

@@ -1,0 +1,31 @@
+.middle {
+    margin: 100px auto;
+    background-color: none;
+
+}
+
+.middle ul {
+    /* width: 1200px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+}
+
+.middle ul li {
+    width: 250px;
+    height: 250px;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 100px;
+    margin: 20px;
+}
+
+.middle ul li h4 {
+    color: blueviolet;
+}
+
+.middle ul li h3,
+.middle ul li h4 {
+    font-size: 20px;
+}
