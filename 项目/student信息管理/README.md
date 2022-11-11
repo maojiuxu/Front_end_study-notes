@@ -118,6 +118,7 @@ newAxios.interceptors.response.use(res => {
     NProgress.done();
     console.log("响应报错了！！！");
     console.error(err);
+    return new Promise(() => {}); // 报错返回一个pending状态的Promise实例
 });
 
 // 最后导出封装的axios
@@ -224,36 +225,143 @@ let addData = () => {
     }
 }
 
-
-
-
-
-
-
-
 ```
 
 
 
+## 四、实时删除学生信息
+
+4.1、首先在`Info`组件中给删除按钮添加点击事件，并在函数内执行父组件`Student`传来的删除方法；
+
+```jsx
+// 首先在父组件Student中添加删除方法：
+let delstudata = (id) => {
+	async function main() {
+        // 删除数据库中的数据
+		await axios.delete(`/data/${id}`);
+        // 删除前端的数据
+        let newdata = stuData.filter(item => item !== id);
+        setStuData(newdata);
+    };
+    main();
+};
+// 将父组件中的删除方法传递给子组件
+<List delstudata={delstudata}></List>
+
+```
+
+4.2、在子组件中接受父组件的删除方法并在子组件中添加点击事同时在其中调用删除方法
+
+```jsx
+// 在子组件中接收删除方法
+let {delstudata} = props;
+// 当点击删除按钮时执行的回调函数
+let del = (id) => { // 在虚拟dom中循环渲染数据时可以拿到要删除数据的id
+	return () => {
+		delstudata(id);
+        // 删除前端页面的数据
+        let newdata = datalist.filter(item => {item.id !== id});
+        setDatalist(newdata);
+    }
+};
+```
 
 
 
+## 五、修改学生信息
+
+5.1、点击`List`组件中的修改按钮时首先将需要修改的数据展示在`Info`组件中
+
+需要提前下载`pubsub-js`包：`npm i pubsub-js`
+
+```jsx
+// 添加点击事件时，可以直接将要修改的数据作为点击事件回调函数的实参
+// 将数据发送给Info组件时用到react发布和订阅，因此需要引入
+import PubSub from 'pubsub-js';
+// 点击事件
+let change = (item) => {
+	return () => {
+		// 点击时发布订阅，将数据通过订阅的方式传递给兄弟组件Info
+        PubSub.publish('revisedata',item);
+    }
+}
+```
+
+5.2、兄弟组件`Info`接收数据，然后将数据渲染到页面上便于用户修改信息
+
+```jsx
+// 导入PubSub用来导入其他组件发布的数据
+import PubSub from 'pubsub-js';
+
+// 解构父组件传来的修改数据的方法
+let { revise } = props;
+// 用于确定修改数据时的第一个参数，根据此参数的id来发patch请求
+let [changid, setChangeid] = useState(0);
+// 根据change状态来切换Info组件的按钮
+let [change, setChange] = useState(false);//初始值为true，默认显示添加学生数据按钮；false为修改学生信息的确认修改和取消修改按钮
+
+// Info子组件中，直接订阅兄弟组件List发布的数据即可，同时将数据渲染到页面
+PubSub.subscribe('revisedata',(msg, data) => {
+	if(name.current){ // 首次调用Info组件时，并未给input框设置初始值，因此刚开始调用时是undefined，所以这里需要判断
+		name.current.value = data.namae;
+        age.current.value = data.age;
+        tel.current.value = data.telphone;
+        sex = data.sex == '男';// 根据sex来默认男女单选按钮
+    };
+    setChangid(data.id); // 存储需要修改数据的id
+    setChange(false); // 隐藏添加学生信息按钮，显示确认修改和取消按钮    
+});
+
+// 当用户修改完后，点击确认修改即把数据重新发给服务器，下面是点击确认修改的回调函数
+let confirmRevise = () => {
+	// 首先获取修改后的数据
+    let sexrevise = sex ? '男' : '女';
+    let obj = {
+		name: name.current.value,
+        age: age.current.value - 0,
+        telphone: tel.current.value,
+        sex: sexadd
+    };
+    // 拿到数据后，将数据传递给父组件，由父组件发请求修改数据
+    revise(changeid, obj);
+    setChange(true);
+};
+
+// 当用户点击取消修改时，我们只需要将表单数据清空，然后将按钮变为原来的添加学生信息即可
+let cancelRevise = () => {
+	// 清空数据
+    name.current.value = '';
+    age.current.value = '';
+    tel.current.value = '';
+    // 通过设置change状态来设置按钮
+    setChange(true);
+};
+```
+
+5.3、父组件中添加修改方法发patch请求
+
+```jsx
+let revise = (id, obj) => {
+	async function main() {
+		let result = await axios.patch(`/data/${id}`, obj);
+        let newdata = stuData;
+        newdata = newdata.filter(item => item.id !== id);
+        newdata.push(result);
+        setStuData(newdata);
+    };
+    main();
+}
+```
 
 
 
+## 六、总结
 
+1、react函数式组件中模拟监听数据更新时的数据必须是深克隆，不然有可能监听不到数据
 
+2、报错：`warning: Each child in a list should have a unique "key" prop.`
 
+添加数据时id相同报错
 
-
-
-
-
-
-
-
-
-
-
-
+3、react组件中有时候用`useState`存储数据或`useRef()`获取数据时未初始化，此时数据的结果为`undefined`。因此使用这类数据时一定要看清数据是否初始化，如果未初始化可能要先判断在使用。
 
